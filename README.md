@@ -1,26 +1,44 @@
-# 🔴⚪ Pokémon Team Builder: Data Pipeline
+# 🔴 Extraction & Analytics Pipeline: Pokémon Team Builder
 
-Bem-vindos ao meu repositório. Sou Júlia Tavares, estudante de Ciência da Computação na UFSCar e desenvolvedora, e este projeto é um laboratório prático para o desenvolvimento de pipelines de dados.
+Este repositório contém o desenvolvimento de um pipeline de dados ponta a ponta (ETL) projetado para responder a um problema analítico específico: **qual é o time de 6 Pokémon mais adequado para vencer os desafios de uma determinada região?** O projeto é estruturado de forma modular e escalável, utilizando dados de consumo público para modelar cenários reais de engenharia de dados.
 
-A proposta principal do projeto é construir um pipeline com as etapas completas de extração, transformação e carga (ETL). O objetivo de negócio da aplicação é analítico: responder qual seria o time de seis Pokémon mais adequado para percorrer uma determinada região da franquia.
+---
 
-Para alimentar a base, o projeto utiliza a PokéAPI como fonte de dados primária, uma API REST pública e gratuita que opera sem exigência de autenticação.
+## 🔌 Fonte de Dados
 
-## 🏗️ Arquitetura e Processamento de Dados
+A origem primária dos dados é a **[PokéAPI](https://pokeapi.co/)**, uma API REST pública e gratuita que não exige autenticação. A extração foca em três frentes principais de dados:
+* **Pokémon:** Atributos de tipos, estatísticas base e moveset.
+* **Ginásios:** Estrutura de líderes e seus respectivos times por região.
+* **Regiões (ex: Kanto, Johto, Hoenn):** Mapeamento de quais Pokémon estão disponíveis para captura em cada rota e em qual momento da jornada ocorrem.
 
-A extração foca em três frentes estruturais: informações dos Pokémon (tipos, estatísticas base e moveset), dados dos ginásios (líderes e seus Pokémon) e as regiões, mapeando a disponibilidade de captura durante a jornada. Todo esse fluxo é gerenciado por uma ferramenta de orquestração responsável por coordenar e sequenciar a coleta, o processamento e a persistência.
+---
 
-O pipeline exige organização em camadas distintas, separando o dado bruto do dado processado para que a estrutura seja expansível futuramente sem reescrever o código existente.
+## 🏗️ Arquitetura de Dados (Camadas Medallion)
 
-| Camada | Processamento e Responsabilidade |
-| :--- | :--- |
-| **Raw (Ingestão)** | Armazena os JSONs brutos originados da PokéAPI, sem qualquer tipo de modificação. |
-| **Trusted (Limpeza e Normalização)** | Estrutura os dados através de um processo de limpeza, tratando e removendo registros incompletos, duplicados ou fora do escopo definido. |
-| **Refined (Scoring e Análise)** | Aplica a regra de negócio central, cruzando os atributos do Pokémon com os ginásios e rotas da região a partir da matriz de tipos. Gera os *scores* de eficácia e entrega os times recomendados por região. |
+O pipeline segue rigorosamente a separação física e lógica entre as etapas de ingestão, transformação e análise, garantindo que o fluxo de dados seja escalável e de fácil manutenção.
 
-## ⚙️ Regras de Negócio e Requisitos
+| Origem / Processamento | Camada | Descrição do Dado |
+| :--- | :--- | :--- |
+| **Extração direta da PokéAPI** | 📁 **Camada Raw** | JSONs brutos da API salvos exatamente como foram coletados, sem qualquer modificação. |
+| **Limpeza e Normalização** | 📁 **Camada Trusted** | Dados limpos, estruturados e normalizados. Nesta etapa, são tratados dados incompletos, duplicados ou registros fora do escopo do projeto. |
+| **Scoring por Região** | 📁 **Camada Refined** | Armazena a matriz de tipos aplicada, scores de eficácia calculados e as recomendações consolidadas dos times. |
 
-A engenharia do projeto atende aos seguintes requisitos técnicos e lógicos:
+---
 
-* **Composição do Time:** O algoritmo final seleciona os 6 melhores Pokémon, obrigatoriamente com tipos distintos, avaliando cobertura ofensiva e defensiva na geração de score. A saída inclui justificativas claras por tipo e ginásio.
-* **Progressão Geográfica:** O mapeamento cruza quais espécies são capturáveis em cada região especificando em que momento da progressão isso
+## ⚙️ Regras de Negócio e Requisitos do Sistema
+
+O pipeline foi projetado sob diretrizes rígidas para garantir consistência analítica e reprodutibilidade técnica.
+
+### Requisitos Funcionais
+* **Mapeamento de Progressão:** Filtrar e determinar em qual ponto da jornada regional cada espécie torna-se capturável.
+* **Cálculo de Matriz de Efetividade:** Cruzar os atributos de tipos dos Pokémon contra as fraquezas e forças dos líderes de ginásio de cada região específica.
+* **Algoritmo de Scoring:** Gerar uma pontuação individual de eficácia para cada Pokémon por região, ponderando sua cobertura ofensiva e defensiva.
+* **Seleção de Time:** Compor o time ideal de exatamente **6 Pokémon**, exigindo obrigatoriamente que possuam **tipos distintos**.
+* **Persistência de Dados:** Gravar os dados processados e refinados em banco de dados para permitir consultas analíticas rápidas, evitando reprocessar todo o pipeline a cada nova consulta.
+* **Entrega de Resultados:** Retornar o time ideal acompanhado de uma justificativa técnica detalhada por tipo e ginásio correspondente.
+
+### Requisitos Não Funcionais
+* **Desacoplamento de ETL:** Divisão clara e isolada entre os processos de extração, transformação e carga.
+* **Reproduzibilidade:** Garantia de idempotência. Executar o pipeline múltiplas vezes com os mesmos parâmetros produzirá resultados idênticos no banco de dados.
+* **Manutenibilidade e Escalabilidade:** O código é estruturado de forma modular. Adicionar uma nova região ou alterar critérios de pontuação no futuro não exige a reescrita dos módulos existentes.
+* **Orquestração de Fluxo:** Utilização de ferramenta de orquestração para coordenar o sequenciamento seguro das etapas de coleta, processamento e persistência.
