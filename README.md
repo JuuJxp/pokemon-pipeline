@@ -112,6 +112,16 @@ Rodando com o parâmetro `regiao` no valor padrão (Kanto), o time recomendado f
 
 Faz sentido olhando pros ginásios de Kanto: Ground cobre bem contra Rock, Electric e Fire, Water cobre contra Fire e Ground, e assim por diante. O time como um todo cobre a maioria dos 8 tipos dos líderes.
 
+Att: Na nova versão, considerando todos os pokemons, o time de kanto ficou assim:
+| Ordem | Pokémon | Tipo 1 | Tipo 2 | Score |
+|---|---|---|---|---|
+| 1 | zygarde-50 | dragon | ground | 6.91 |
+| 2 | landorus-incarnate | ground | flying | 6.91 |
+| 3 | torterra | grass | ground | 6.86 |
+| 4 | ting-lu | dark | ground | 6.39 |
+| 5 | nincada | bug | ground | 6.18 |
+| 6 | palossand | ghost | ground | 5.58 |
+
 ## Limitações e próximos passos
 
 O projeto hoje suporta 4 regiões (Kanto, Johto, Hoenn e Sinnoh), cada uma com seus 8 ginásios clássicos. Estender pra outra região é simples, só falta criar o arquivo `gyms_<regiao>.json` correspondente e incluir o nome em `src/config.py`. Uma limitação que continua existindo é que o dataset de ginásios foi montado manualmente, então qualquer erro de digitação nesses arquivos afeta o cálculo do score, diferente dos dados que vêm direto da API. Outra coisa que ainda não fiz é tratar regiões que têm mais de 8 ginásios ou formato diferente de progressão (algumas gerações mais recentes mudam essa estrutura), então por enquanto o projeto assume sempre 8 ginásios no formato clássico.
