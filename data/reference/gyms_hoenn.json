@@ -1,0 +1,14 @@
+{
+  "regiao": "hoenn",
+  "fonte": "Conhecimento publico dos jogos Pokemon Ruby/Sapphire/Emerald (dado curado manualmente, ja que a PokeAPI nao expoe ginasios/lideres)",
+  "ginasios": [
+    {"ordem": 1, "cidade": "Rustboro City", "lider": "Roxanne", "tipo": "rock"},
+    {"ordem": 2, "cidade": "Dewford Town", "lider": "Brawly", "tipo": "fighting"},
+    {"ordem": 3, "cidade": "Mauville City", "lider": "Wattson", "tipo": "electric"},
+    {"ordem": 4, "cidade": "Lavaridge Town", "lider": "Flannery", "tipo": "fire"},
+    {"ordem": 5, "cidade": "Petalburg City", "lider": "Norman", "tipo": "normal"},
+    {"ordem": 6, "cidade": "Fortree City", "lider": "Winona", "tipo": "flying"},
+    {"ordem": 7, "cidade": "Mossdeep City", "lider": "Tate e Liza", "tipo": "psychic"},
+    {"ordem": 8, "cidade": "Sootopolis City", "lider": "Wallace", "tipo": "water"}
+  ]
+}

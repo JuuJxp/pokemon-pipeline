@@ -1,0 +1,14 @@
+{
+  "regiao": "kanto",
+  "fonte": "Conhecimento publico dos jogos Pokemon Red/Blue/Yellow (dado curado manualmente, ja que a PokeAPI nao expoe ginasios/lideres)",
+  "ginasios": [
+    {"ordem": 1, "cidade": "Pewter City", "lider": "Brock", "tipo": "rock"},
+    {"ordem": 2, "cidade": "Cerulean City", "lider": "Misty", "tipo": "water"},
+    {"ordem": 3, "cidade": "Vermilion City", "lider": "Lt. Surge", "tipo": "electric"},
+    {"ordem": 4, "cidade": "Celadon City", "lider": "Erika", "tipo": "grass"},
+    {"ordem": 5, "cidade": "Fuchsia City", "lider": "Koga", "tipo": "poison"},
+    {"ordem": 6, "cidade": "Saffron City", "lider": "Sabrina", "tipo": "psychic"},
+    {"ordem": 7, "cidade": "Cinnabar Island", "lider": "Blaine", "tipo": "fire"},
+    {"ordem": 8, "cidade": "Viridian City", "lider": "Giovanni", "tipo": "ground"}
+  ]
+}

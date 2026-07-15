@@ -1,0 +1,14 @@
+{
+  "regiao": "johto",
+  "fonte": "Conhecimento publico dos jogos Pokemon Gold/Silver/Crystal (dado curado manualmente, ja que a PokeAPI nao expoe ginasios/lideres)",
+  "ginasios": [
+    {"ordem": 1, "cidade": "Violet City", "lider": "Falkner", "tipo": "flying"},
+    {"ordem": 2, "cidade": "Azalea Town", "lider": "Bugsy", "tipo": "bug"},
+    {"ordem": 3, "cidade": "Goldenrod City", "lider": "Whitney", "tipo": "normal"},
+    {"ordem": 4, "cidade": "Ecruteak City", "lider": "Morty", "tipo": "ghost"},
+    {"ordem": 5, "cidade": "Cianwood City", "lider": "Chuck", "tipo": "fighting"},
+    {"ordem": 6, "cidade": "Olivine City", "lider": "Jasmine", "tipo": "steel"},
+    {"ordem": 7, "cidade": "Mahogany Town", "lider": "Pryce", "tipo": "ice"},
+    {"ordem": 8, "cidade": "Blackthorn City", "lider": "Clair", "tipo": "dragon"}
+  ]
+}

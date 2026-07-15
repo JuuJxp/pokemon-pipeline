@@ -1,0 +1,14 @@
+{
+  "regiao": "sinnoh",
+  "fonte": "Conhecimento publico dos jogos Pokemon Diamond/Pearl/Platinum (dado curado manualmente, ja que a PokeAPI nao expoe ginasios/lideres)",
+  "ginasios": [
+    {"ordem": 1, "cidade": "Oreburgh City", "lider": "Roark", "tipo": "rock"},
+    {"ordem": 2, "cidade": "Eterna City", "lider": "Gardenia", "tipo": "grass"},
+    {"ordem": 3, "cidade": "Veilstone City", "lider": "Maylene", "tipo": "fighting"},
+    {"ordem": 4, "cidade": "Pastoria City", "lider": "Crasher Wake", "tipo": "water"},
+    {"ordem": 5, "cidade": "Hearthome City", "lider": "Fantina", "tipo": "ghost"},
+    {"ordem": 6, "cidade": "Canalave City", "lider": "Byron", "tipo": "steel"},
+    {"ordem": 7, "cidade": "Snowpoint City", "lider": "Candice", "tipo": "ice"},
+    {"ordem": 8, "cidade": "Sunyshore City", "lider": "Volkner", "tipo": "electric"}
+  ]
+}

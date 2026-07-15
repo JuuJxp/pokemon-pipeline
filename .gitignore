@@ -1,0 +1,10 @@
+venv/
+__pycache__/
+*.pyc
+.env
+data/raw/*.json
+data/trusted/*.csv
+logs/*.log
+.vscode/
+airflow.cfg
+airflow.db
